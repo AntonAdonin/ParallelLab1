@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.26)
+project(ParallelLab1)
+
+set(CMAKE_CXX_STANDARD 23)
+
+if (NOT DEFINED TYPE)
+    message(STATUS "TYPE is not defined.")
+    message(STATUS "Using by defalt: double")
+    add_compile_definitions(TYPE=double)
+else ()
+    message(STATUS "TYPE is defined: ${TYPE}")
+    if (TYPE STREQUAL "float" OR TYPE STREQUAL "double")
+        message(STATUS "Using type: ${TYPE}")
+        add_compile_definitions(TYPE=${TYPE})
+        add_executable(ParallelLab1 main.cpp)
+    else ()
+        message(STATUS "WRONG TYPE: ${TYPE}")
+    endif ()
+endif ()
+
